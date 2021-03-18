@@ -23,7 +23,17 @@ namespace VCubWatcher.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ListeStations()
+        {
+            return View();
+        }
+
+        public IActionResult Carte()
+        {
+            return View();
+        }
+
+        public IActionResult MesFavoris()
         {
             return View();
         }
