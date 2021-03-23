@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using VCubWatcher.Models;
 
 namespace VCubWatcher.Controllers
@@ -19,7 +16,8 @@ namespace VCubWatcher.Controllers
 
         public IActionResult Carte()
         {
-            return View();
+            var stations = GetBikeStationsFromApi();
+            return View(stations);
         }
 
         private static List<BikeStation> GetBikeStationsFromApi()
@@ -31,6 +29,7 @@ namespace VCubWatcher.Controllers
                 var response = client.GetAsync("http://api.alexandredubois.com/vcub-backend/vcub.php");
                 //Récupération du corps de la réponse HTTP sous forme de chaîne de caractères
                 var stringResult = response.Result.Content.ReadAsStringAsync();
+                
                 //Conversion de mon flux JSON (string) en une collection d'objets BikeStation
                 //d'un flux de données vers des objets => Déserialisation
                 //d'objets vers un flux de données => Sérialisation
