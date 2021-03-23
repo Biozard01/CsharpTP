@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Liste Des Stations";
+}
+
+@model List<BikeStation>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Nb velos</th>
+        <th>Nb velos elec</th>
+        <th>Nb emplacements</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var station in Model)
+    {
+        <tr>
+            <td>@station.Name</td>
+            <td>@station.BikeCountTotal</td>
+            <td>@station.ElectricBikeCount</td>
+            <td>@station.SlotCount</td>
+        </tr>
+    }
+    </tbody>
+</table>
